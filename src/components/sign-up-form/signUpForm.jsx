@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import FormInput from "../form-input/formInput";
+import Button from "../button/Button";
+
+import { UserContext } from "../../contexts/UserContext";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -16,14 +19,13 @@ const defaultFormFields = {
 };
 
 import "./signUpForm.scss";
-import Button from "../button/Button";
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   //   Destructuring to allow us to access 'defaultFormFields'
   const { displayName, email, password, confirmPassword } = formFields;
 
-  console.log(formFields);
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -45,6 +47,9 @@ const SignUpForm = () => {
         email,
         password
       );
+
+      setCurrentUser(user);
+
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {

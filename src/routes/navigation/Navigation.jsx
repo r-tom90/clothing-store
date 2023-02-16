@@ -1,10 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 // Vite needs a package manager plugin to utilize svg
 import { ReactComponent as MyIcon } from "../../assets/crown.svg";
+import { UserContext } from "../../contexts/UserContext";
+
+import { signOutUser } from "../../utils/firebase/firebase";
+
 import "./navigation.scss";
 
 const Navigation = () => {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
+
   return (
     // Fragment is a component that renders to nothing
     <Fragment>
@@ -19,9 +30,15 @@ const Navigation = () => {
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
-          <Link className="nav-link" to="/auth">
-            SIGN IN
-          </Link>
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutHandler}>
+              SIGN OUT
+            </span>
+          ) : (
+            <Link className="nav-link" to="/auth">
+              SIGN IN
+            </Link>
+          )}
         </div>
       </div>
       {/* Outlet determines position of where the sibling routes go */}

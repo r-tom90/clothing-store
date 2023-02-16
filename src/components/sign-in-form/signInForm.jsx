@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import FormInput from "../form-input/formInput";
+import Button from "../button/Button";
+
+import { UserContext } from "../../contexts/UserContext";
 
 import {
   signInWithGooglePopup,
@@ -15,14 +18,13 @@ const defaultFormFields = {
 };
 
 import "./signInForm.scss";
-import Button from "../button/Button";
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   //   Destructuring to allow us to access 'defaultFormFields'
   const { email, password } = formFields;
 
-  console.log(formFields);
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -35,11 +37,12 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      setCurrentUser(user);
+
       resetFormFields();
     } catch (error) {
       switch (error.code) {
