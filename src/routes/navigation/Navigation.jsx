@@ -1,15 +1,21 @@
 import React, { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
+
+import CartIcon from "../../components/cart-icon/cartIcon";
+import CartDropdown from "../../components/cart-dropdown/CartDropdown";
+
+import { UserContext } from "../../contexts/UserContext";
+import { CartContext } from "../../contexts/CartContext";
+
 // Vite needs a package manager plugin to utilize svg
 import { ReactComponent as MyIcon } from "../../assets/crown.svg";
-import { UserContext } from "../../contexts/UserContext";
-
 import { signOutUser } from "../../utils/firebase/firebase";
 
 import "./navigation.scss";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
 
   return (
     // Fragment is a component that renders to nothing
@@ -34,7 +40,9 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
+        {isCartOpen && <CartDropdown />}
       </div>
       {/* Outlet determines position of where the sibling routes go */}
       <Outlet />

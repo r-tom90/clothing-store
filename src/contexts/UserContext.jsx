@@ -4,7 +4,7 @@ import {
   onAuthStateChangedListener,
 } from "../utils/firebase/firebase";
 
-// ? 2 pieces for to create a context, the UserContext and UserProvider
+// ? 2 pieces for to createContext, a UserContext and UserProvider
 
 //UserContext is the storage piece itself with the default value. "The actual value you want to access"
 export const UserContext = createContext({
