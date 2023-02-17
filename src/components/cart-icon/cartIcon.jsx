@@ -8,8 +8,8 @@ import { AiFillShopping } from "react-icons/ai";
 import { CartContext } from "../../contexts/CartContext";
 
 const CartIcon = () => {
+  // Allows for toggle action of when cart logo is clicked
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
-
   const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
   return (

@@ -42,9 +42,10 @@ const Navigation = () => {
           )}
           <CartIcon />
         </div>
+        {/* Components are all truthy values as they are functions */}
         {isCartOpen && <CartDropdown />}
       </div>
-      {/* Outlet determines position of where the sibling routes go */}
+      {/* Outlet determines position of where the sibling routes go when laying out, it renders the rest of the new components*/}
       <Outlet />
     </Fragment>
   );
