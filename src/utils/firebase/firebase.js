@@ -11,6 +11,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 // Allows to use Firestore DB service from Firebase
@@ -90,3 +91,7 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 // A function that calls signOut with Auth
 export const signOutUser = async () => await signOut(auth);
+
+// A permanently open listener that returns back what is changed
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

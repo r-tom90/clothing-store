@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import FormInput from "../form-input/formInput";
 import Button from "../button/Button";
-
-import { UserContext } from "../../contexts/UserContext";
 
 import {
   signInWithGooglePopup,
@@ -24,14 +22,16 @@ const SignInForm = () => {
   //   Destructuring to allow us to access 'defaultFormFields'
   const { email, password } = formFields;
 
-  const { setCurrentUser } = useContext(UserContext);
-
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
-  //   Event Handlers
+  // Event Handler to log in with google
+  const signInWithGoogle = async () => {
+    await signInWithGooglePopup();
+  };
 
+  //   Event Handlers
   const handleSubmit = async (event) => {
     // Prevents default
     event.preventDefault();
@@ -41,7 +41,6 @@ const SignInForm = () => {
         email,
         password
       );
-      setCurrentUser(user);
 
       resetFormFields();
     } catch (error) {
@@ -56,12 +55,6 @@ const SignInForm = () => {
           console.log(error);
       }
     }
-  };
-
-  // Event Handler to log in with google
-  const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocumentFromAuth(user);
   };
 
   const handleChange = (event) => {
