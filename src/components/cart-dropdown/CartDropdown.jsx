@@ -27,6 +27,7 @@ const CartDropdown = () => {
         ) : (
           <span className="empty-message">Your cart is empty</span>
         )}
+        {/* TODO: Add total cost price */}
       </div>
       <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
     </div>
