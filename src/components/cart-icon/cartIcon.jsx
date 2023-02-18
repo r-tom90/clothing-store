@@ -8,8 +8,8 @@ import { AiFillShopping } from "react-icons/ai";
 import { CartContext } from "../../contexts/CartContext";
 
 const CartIcon = () => {
-  // Allows for toggle action of when cart logo is clicked
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  // Allows for toggle action of when cart logo is clicked and cartCount to change based on items added
+  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
   const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
   return (
@@ -17,7 +17,7 @@ const CartIcon = () => {
       {/* SVG issues with vite, therefore react-icons used */}
       {/* <ShoppingIcon className="shopping-icon" /> */}
       <AiFillShopping className="shopping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">{cartCount}</span>
     </div>
   );
 };
