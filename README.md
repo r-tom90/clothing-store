@@ -1,3 +1,3 @@
 # clothing-store
 
-Firebase DB used: Authentication and Firestore Database
+Firebase DB No-SQL used: Authentication and Firestore Database

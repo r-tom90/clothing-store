@@ -23,6 +23,17 @@
     overflow: scroll;
   }
 
+  .cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+
+    .cart-total {
+      font-weight: bold;
+      color: maroon;
+    }
+  }
+
   button {
     margin-top: auto;
   }

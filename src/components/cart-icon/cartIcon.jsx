@@ -13,6 +13,7 @@ const CartIcon = () => {
   const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
   return (
+    // TODO: Add in hover feature to toggle instead of onClick
     <div className="cart-icon-container" onClick={toggleIsCartOpen}>
       {/* SVG issues with vite, therefore react-icons used */}
       {/* <ShoppingIcon className="shopping-icon" /> */}

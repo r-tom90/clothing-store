@@ -9,7 +9,7 @@ import CartItem from "../cart-item/CartItem";
 import "./cartDropdown.scss";
 
 const CartDropdown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, cartTotal } = useContext(CartContext);
   // useNavigate allows us to get a navigation function from react-router
   const navigate = useNavigate();
 
@@ -27,8 +27,11 @@ const CartDropdown = () => {
         ) : (
           <span className="empty-message">Your cart is empty</span>
         )}
-        {/* TODO: Add total cost price */}
       </div>
+      {/* TODO: Style total cost price */}
+      <span className="cart-subtotal">
+        Subtotal: <span className="cart-total">${cartTotal}</span>
+      </span>
       <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
     </div>
   );

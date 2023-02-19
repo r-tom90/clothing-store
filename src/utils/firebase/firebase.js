@@ -15,7 +15,14 @@ import {
 } from "firebase/auth";
 
 // Allows to use Firestore DB service from Firebase
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -46,6 +53,23 @@ export const signInWithGooglePopup = () =>
 
 // Firestore
 export const db = getFirestore();
+
+// A method to upload categories from the shop data to firestore
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("done");
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,
