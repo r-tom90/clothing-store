@@ -29,11 +29,6 @@ const Home = () => {
       title: "mens",
       imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
     },
-    {
-      id: 6,
-      title: "mens",
-      imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    },
   ];
 
   return (
