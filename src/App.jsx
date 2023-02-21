@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
-import Navigation from "./routes/navigation/Navigation";
+import Navigation from "./routes/navigation/Navigation.components";
 import Home from "./routes/home/home";
-import Authentication from "./routes/authentication/Authentication";
-import Shop from "./routes/shop/Shop";
-import Checkout from "./routes/checkout/Checkout";
+import Authentication from "./routes/authentication/Authentication.component";
+import Shop from "./routes/shop/Shop.component";
+import Checkout from "./routes/checkout/Checkout.component";
 
 function App() {
   return (
