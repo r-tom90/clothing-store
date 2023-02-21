@@ -8,11 +8,7 @@ const FormInput = ({ label, ...otherProps }) => {
       <Input {...otherProps} />
       {/* If label exists, then css will run */}
       {label && (
-        <FormInputLabel
-          className={`${
-            otherProps.value.length ? "shrink" : ""
-          } form-input-label `}
-        >
+        <FormInputLabel shrink={otherProps.value.length}>
           {label}
         </FormInputLabel>
       )}

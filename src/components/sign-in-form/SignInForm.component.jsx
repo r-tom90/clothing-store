@@ -4,8 +4,8 @@ import FormInput from "../form-input/FormInput.component";
 import Button, { buttonTypeClasses } from "../button/Button.component";
 
 import {
-  signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
+  signInWithGooglePopup,
 } from "../../utils/firebase/firebase";
 
 // Form Object created to help refactor from more lines of code for useState
