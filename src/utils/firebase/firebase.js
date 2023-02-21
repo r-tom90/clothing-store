@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   // * Imported but not used as we are going for signing in with pop-up
-  //   signInWithRedirect,
+  signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -41,6 +41,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Google Auth Only
 const googleProvider = new GoogleAuthProvider();
+
 googleProvider.setCustomParameters({
   prompt: "select_account",
 });
@@ -49,9 +50,9 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 
-// * Imported but not used as we are going for signing in with pop-up
-// export const signInWithGoogleRedirect = () =>
-//   signInWithRedirect(auth, googleProvider);
+// ! Imported but not used as we are going for signing in with pop-up
+export const signInWithGoogleRedirect = () =>
+  signInWithRedirect(auth, googleProvider);
 
 // Firestore
 export const db = getFirestore();
@@ -92,6 +93,7 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
+
   const userDocRef = doc(db, "users", userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
