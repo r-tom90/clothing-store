@@ -8,13 +8,13 @@ import {
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase";
 
+import { SignInContainer, ButtonsContainer } from "./signInForm.styles";
+
 // Form Object created to help refactor from more lines of code for useState
 const defaultFormFields = {
   email: "",
   password: "",
 };
-
-import { SignInContainer, ButtonsContainer } from "./signInForm.styles";
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
