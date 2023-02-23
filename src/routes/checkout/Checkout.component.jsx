@@ -1,6 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 
-import { CartContext } from "../../contexts/CartContext";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cart.selector";
 
 import CheckoutItem from "../../components/checkout-item/CheckoutItem.component";
 
@@ -13,8 +17,8 @@ import {
 } from "./checkout.styles";
 
 const Checkout = () => {
-  // useContext allows us to access the required stored data and functions from CartContext
-  const { cartItems, cartTotal } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <CheckoutContainer>

@@ -1,11 +1,12 @@
-import React, { Fragment, useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import React, { Fragment } from "react";
+import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import CartIcon from "../../components/cart-icon/CartIcon.component";
 import CartDropdown from "../../components/cart-dropdown/CartDropdown.component";
 
-import { UserContext } from "../../contexts/UserContext";
-import { CartContext } from "../../contexts/CartContext";
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
 // ? Vite needs a package manager plugin to utilize svg
 import { ReactComponent as MyIcon } from "../../assets/crown.svg";
@@ -14,14 +15,14 @@ import { signOutUser } from "../../utils/firebase/firebase";
 // ? Importing styled components.
 import {
   NavigationContainer,
-  LogoContainer,
   NavLinks,
   NavLink,
+  LogoContainer,
 } from "./navigation.styles";
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   return (
     // Fragment is a component that renders to nothing
@@ -33,6 +34,7 @@ const Navigation = () => {
         <NavLinks>
           <NavLink to="/">HOME</NavLink>
           <NavLink to="/shop">SHOP</NavLink>
+
           {currentUser ? (
             // ? Rendered "as a span" and not a link
             <NavLink as="span" onClick={signOutUser}>
@@ -41,8 +43,10 @@ const Navigation = () => {
           ) : (
             <NavLink to="/auth">SIGN IN</NavLink>
           )}
+
           <CartIcon />
         </NavLinks>
+
         {/* Components are all truthy values as they are functions */}
         {isCartOpen && <CartDropdown />}
       </NavigationContainer>
