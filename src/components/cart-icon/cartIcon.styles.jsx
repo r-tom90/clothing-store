@@ -17,6 +17,15 @@ export const CartIconContainer = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: 47px;
+    height: 47px;
+  }
+  @media screen and (min-width: 1080px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 export const ItemCount = styled.span`
   position: absolute;
@@ -24,4 +33,11 @@ export const ItemCount = styled.span`
   font-weight: bold;
   bottom: 13.5px;
   color: white;
+
+  @media screen and (min-width: 768px) {
+    font-size: 11px;
+  }
+  @media screen and (min-width: 1080px) {
+    font-size: 12px;
+  }
 `;

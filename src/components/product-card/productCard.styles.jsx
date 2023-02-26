@@ -1,25 +1,29 @@
 import styled from "styled-components";
 
 export const ProductCartContainer = styled.div`
-  width: 100%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   height: 350px;
   align-items: center;
   position: relative;
+
   img {
-    width: 100%;
-    height: 95%;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     margin-bottom: 5px;
+    border-radius: 5px;
   }
+
   button {
     width: 80%;
     opacity: 0.7;
     position: absolute;
-    top: 255px;
+    top: 230px;
     display: none;
   }
+
   &:hover {
     img {
       opacity: 0.8;
@@ -37,6 +41,13 @@ export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 18px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+  @media screen and (min-width: 1080px) {
+    font-size: 22px;
+  }
 `;
 
 export const Name = styled.span`

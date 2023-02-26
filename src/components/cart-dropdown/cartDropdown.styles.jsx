@@ -18,6 +18,7 @@ export const CartDropdownContainer = styled.div`
   top: 90px;
   right: 40px;
   z-index: 5;
+  border-radius: 5px;
 
   // ? Nesting to target custom button
   ${BaseButton},

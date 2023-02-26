@@ -23,6 +23,13 @@ export const NavLinks = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 1080px) {
+    font-size: 20px;
+  }
 `;
 
 export const NavLink = styled(Link)`

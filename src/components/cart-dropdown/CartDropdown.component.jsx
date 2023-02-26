@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -38,7 +37,6 @@ const CartDropdown = () => {
           <EmptyMessage>Your cart is empty</EmptyMessage>
         )}
       </CartItems>
-      {/* TODO: Style total cost price */}
       <CartSubtotal>
         Subtotal: <CartTotal>${cartTotal}</CartTotal>
       </CartSubtotal>

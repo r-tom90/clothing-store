@@ -9,7 +9,7 @@ import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
 // ? Vite needs a package manager plugin to utilize svg
-import { ReactComponent as MyIcon } from "../../assets/crown.svg";
+import { ReactComponent as MyIcon } from "../../assets/logo.svg";
 import { signOutUser } from "../../utils/firebase/firebase";
 
 // ? Importing styled components.
@@ -29,7 +29,7 @@ const Navigation = () => {
     <Fragment>
       <NavigationContainer>
         <LogoContainer to="/">
-          <MyIcon className="logo" />
+          <MyIcon className="logo" style={{ height: 40, width: 40 }} />
         </LogoContainer>
         <NavLinks>
           <NavLink to="/">HOME</NavLink>
